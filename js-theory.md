@@ -3,6 +3,9 @@
 > এই ফাইলে **বুঝে পড়ার** জন্য সব ব্যাখ্যা আছে। উপমা → ব্যাখ্যা → code।
 > মুখে বলার ছোট উত্তরগুলো আলাদা ফাইলে আছে: `INTERVIEW_ANSWERS.md`
 
+> **রঙের মানে:** 🔴 অবশ্যই পড়ো (প্রায় নিশ্চিত আসবে) | 🟡 মূল ধারণা জানলেই চলবে | ⚪ সময় থাকলে
+> প্রতিটা প্রশ্নের heading এর পাশেই রঙ বসানো আছে, উপরে ফিরে দেখতে হবে না।
+
 ---
 
 ## 📑 সূচিপত্র
@@ -71,7 +74,16 @@
 
 ---
 
-## 1. Hoisting
+# 📦 PART 1: Core ও Execution (Hoisting, Scope, Closure, Event Loop)
+
+> প্রশ্ন 1–8 | ⏱️ আনুমানিক সময়: ~৪০ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 1, 2, 3, 4, 5, 6, 8
+> 🟡 **Good (মূল ধারণা):** 7
+
+---
+
+## 🔴 1. Hoisting
 
 ### 🧠 উপমা
 পরীক্ষার আগে শিক্ষক roll sheet বানিয়ে নেন, কে কোথায় বসবে ঠিক করে ফেলেন। JS ও কোড চালানোর আগে সব variable/function এর নাম তালিকায় তুলে নেয়।
@@ -102,7 +114,7 @@ var hello = function () {};
 
 ---
 
-## 2. Temporal Dead Zone (TDZ)
+## 🔴 2. Temporal Dead Zone (TDZ)
 
 ### 📖 ব্যাখ্যা
 `let`/`const` এর scope শুরু থেকে declaration লাইন পর্যন্ত সময়টাকে TDZ বলে। এ সময় variable আছে কিন্তু ছোঁয়া নিষেধ।
@@ -128,7 +140,7 @@ let a = 'বাইরের';
 
 ---
 
-## 3. Execution Context
+## 🔴 3. Execution Context
 
 ### 📖 ব্যাখ্যা
 Execution context হলো কোড চলার "পরিবেশ বা বাক্স"। এতে থাকে variable, `this`, আর outer scope এর reference।
@@ -152,7 +164,7 @@ a();
 
 ---
 
-## 4. Call Stack, Task Queue, Microtask Queue
+## 🔴 4. Call Stack, Task Queue, Microtask Queue
 
 ### 🧠 উপমা
 ব্যাংকের কাউন্টার: কাউন্টারে যার কাজ চলছে = **call stack**। সাধারণ লাইন = **task queue**। VIP লাইন = **microtask queue** (আগে পুরো খালি হবে)।
@@ -173,7 +185,7 @@ a();
 
 ---
 
-## 5. Event Loop: Promise কেন setTimeout এর আগে চলে
+## 🔴 5. Event Loop: Promise কেন setTimeout এর আগে চলে
 
 কারণ Promise callback যায় **microtask** এ, setTimeout যায় **task queue** তে, আর event loop সবসময় microtask আগে খালি করে।
 
@@ -218,7 +230,7 @@ console.log('F');
 
 ---
 
-## 6. Lexical Scope
+## 🔴 6. Lexical Scope
 
 ### 🧠 উপমা
 রুশ পুতুল: ভেতরেরটা বাইরের সবগুলোকে দেখে, বাইরেরটা ভেতরেরটাকে দেখে না।
@@ -263,7 +275,7 @@ console.log(b); // ❌ ReferenceError
 
 ---
 
-## 7. Undeclared vs undefined
+## 🟡 7. Undeclared vs undefined
 
 ```js
 let a;
@@ -274,7 +286,7 @@ console.log(typeof b); // "undefined" → typeof এ error দেয় না
 
 ---
 
-## 8. Closure
+## 🔴 8. Closure
 
 ### 🧠 উপমা
 ছেলে গ্রাম ছেড়ে শহরে গেছে, কিন্তু **পকেটে গ্রামের ঘরের চাবি** আছে। Closure সেই চাবি।
@@ -336,7 +348,16 @@ function setup() {
 
 ---
 
-## 9. Function Declaration vs Expression
+# 📦 PART 2: Functions ও `this`
+
+> প্রশ্ন 9–13 | ⏱️ আনুমানিক সময়: ~৩০ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 10, 11
+> 🟡 **Good (মূল ধারণা):** 9, 12, 13
+
+---
+
+## 🟡 9. Function Declaration vs Expression
 
 ```js
 // Declaration
@@ -355,7 +376,7 @@ const add3 = (a, b) => a + b;   // arrow expression
 
 ---
 
-## 10. `this`
+## 🔴 10. `this`
 
 ### 🧠 সহজ নিয়ম
 > **`this` = কে function টাকে call করছে।** (arrow function ছাড়া)
@@ -411,7 +432,7 @@ Element দরকার হলে arrow তে `event.currentTarget` ব্য�
 
 ---
 
-## 11. `bind`, `call`, `apply`
+## 🔴 11. `bind`, `call`, `apply`
 
 `this` কে **জোর করে** ঠিক করার তিন উপায়।
 
@@ -440,7 +461,7 @@ bound('!');
 
 ---
 
-## 12. Currying
+## 🟡 12. Currying
 
 একাধিক আর্গুমেন্টের function কে **একটা একটা আর্গুমেন্টের chain** এ ভাঙা।
 
@@ -472,7 +493,7 @@ function curry(fn) {
 
 ---
 
-## 13. Function Composition
+## 🟡 13. Function Composition
 
 ছোট ছোট function জোড়া লাগিয়ে বড় কাজ। একটার output পরেরটার input।
 
@@ -490,7 +511,16 @@ makeSlug('  Hello World  ');  // 'hello-world'
 
 ---
 
-## 14. Prototype Chain
+# 📦 PART 3: Objects ও Prototype
+
+> প্রশ্ন 14–18 | ⏱️ আনুমানিক সময়: ~৩০ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 14, 16, 17
+> 🟡 **Good (মূল ধারণা):** 15, 18
+
+---
+
+## 🔴 14. Prototype Chain
 
 ### 🧠 উপমা
 বাচ্চা কিছু না জানলে বাবাকে জিজ্ঞেস করে, বাবা না জানলে দাদাকে। এভাবে ওপরে ওঠে।
@@ -523,7 +553,7 @@ p.hi();   // method টা সব instance এ share হয়, memory বাঁ
 
 ---
 
-## 15. `Object.create()` vs Class Inheritance
+## 🟡 15. `Object.create()` vs Class Inheritance
 
 আসলে **দুটোই prototype chain ই ব্যবহার করে**। `class` হলো prototype এর উপর সুন্দর syntax (syntactic sugar)।
 
@@ -552,7 +582,7 @@ class Dog extends Animal {
 
 ---
 
-## 16. Property Lookup
+## 🔴 16. Property Lookup
 
 `obj.x` লিখলে JS এই ক্রমে খোঁজে:
 1. object এর **নিজের** property
@@ -574,7 +604,7 @@ Object.hasOwn(b, 'x');  // false (আধুনিক পদ্ধতি)
 
 ---
 
-## 17. Shallow Copy vs Deep Copy
+## 🔴 17. Shallow Copy vs Deep Copy
 
 ### 🧠 উপমা
 **Shallow:** বইয়ের শুধু সূচিপত্র ফটোকপি করলে, ভেতরের পাতা আসল বইয়েরই থাকে। **Deep:** পুরো বই ফটোকপি।
@@ -603,7 +633,7 @@ d1.address.city = 'Sylhet';             // original অপরিবর্তি�
 
 ---
 
-## 18. `Object.freeze()` vs `Object.seal()`
+## 🟡 18. `Object.freeze()` vs `Object.seal()`
 
 | | নতুন property যোগ | মুছা | মান বদলানো |
 |---|---|---|---|
@@ -621,7 +651,16 @@ o.nested.b = 99;  // ✅ বদলে যায়! freeze shallow
 
 ---
 
-## 19. Promise States ও Chaining
+# 📦 PART 4: Asynchronous JavaScript (Promise, async/await)
+
+> প্রশ্ন 19–25 | ⏱️ আনুমানিক সময়: ~৪০ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 19, 20, 21, 23
+> 🟡 **Good (মূল ধারণা):** 22, 24, 25
+
+---
+
+## 🔴 19. Promise States ও Chaining
 
 **Pending → Fulfilled / Rejected।** একবার settled হলে আর বদলায় না।
 
@@ -639,7 +678,7 @@ fetchUser(1)
 
 ---
 
-## 20. async/await vs Promise
+## 🔴 20. async/await vs Promise
 
 `async/await` = Promise এর উপর syntactic sugar।
 
@@ -665,7 +704,7 @@ const [a, b, c] = await Promise.all([getA(), getB(), getC()]);
 
 ---
 
-## 21. async function এ `await` না করলে
+## 🔴 21. async function এ `await` না করলে
 
 ```js
 async function getName() { return 'Alamin'; }
@@ -691,7 +730,7 @@ for (const i of items) await save(i);        // ক্রমানুসার�
 
 ---
 
-## 22. `Promise.all()` নিজে implement
+## 🟡 22. `Promise.all()` নিজে implement
 
 ```js
 function myPromiseAll(promises) {
@@ -716,7 +755,7 @@ function myPromiseAll(promises) {
 
 ---
 
-## 23. `all`, `allSettled`, `race`, `any`
+## 🔴 23. `all`, `allSettled`, `race`, `any`
 
 | Method | Resolve | Reject |
 |---|---|---|
@@ -734,7 +773,7 @@ const data = await Promise.race([fetch('/api'), timeout]);
 
 ---
 
-## 24. Concurrency Limit সহ async কাজ
+## 🟡 24. Concurrency Limit সহ async কাজ
 
 ১০০০টা request একসাথে পাঠালে server/API ডুবে যাবে। তাই **একসাথে সর্বোচ্চ N টা** চালাতে হয়।
 
@@ -763,7 +802,7 @@ await runWithLimit(tasks, 5);   // একসাথে সর্বোচ্চ �
 
 ---
 
-## 25. Callback Hell ও আধুনিক সমাধান
+## 🟡 25. Callback Hell ও আধুনিক সমাধান
 
 Callback এর ভেতর callback এর ভেতর callback → ডানে সরতে থাকা "pyramid of doom", পড়া ও error handling কঠিন।
 
@@ -787,7 +826,16 @@ try {
 
 ---
 
-## 26. JavaScript এ Memory Leak এর কারণ
+# 📦 PART 5: Performance, Memory ও Advanced
+
+> প্রশ্ন 26–31 | ⏱️ আনুমানিক সময়: ~২৫ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 28, 31
+> 🟡 **Good (মূল ধারণা):** 26, 27, 29, 30
+
+---
+
+## 🟡 26. JavaScript এ Memory Leak এর কারণ
 
 1. **Global variable** এ জমানো
 2. **Unbounded cache** (সীমাহীন object/array)
@@ -801,7 +849,7 @@ try {
 
 ---
 
-## 27. Garbage Collection (Mark-and-Sweep)
+## 🟡 27. Garbage Collection (Mark-and-Sweep)
 
 ### 📖 ব্যাখ্যা
 Reference counting এর সমস্যা ছিল circular reference। এখন সব engine **mark-and-sweep** ব্যবহার করে:
@@ -821,7 +869,7 @@ a = null;   // আগের object এ আর কোনো reference নেই �
 
 ---
 
-## 28. Debounce vs Throttle
+## 🔴 28. Debounce vs Throttle
 
 ### 🧠 উপমা
 - **Debounce:** লিফটের দরজা। কেউ ঢুকলে timer reset হয়। **সবাই থামার** পর বন্ধ হয়।
@@ -857,7 +905,7 @@ Debounce এ `timer` আর throttle এ `lastTime` **closure** দিয়ে 
 
 ---
 
-## 29. Immutability
+## 🟡 29. Immutability
 
 Immutable মানে ডেটা তৈরির পর **বদলানো হয় না**, বদলাতে হলে **নতুন কপি** বানাও।
 
@@ -882,7 +930,7 @@ Deep nested এর জন্য: `structuredClone`, **Immer** library।
 
 ---
 
-## 30. Pure Functions
+## 🟡 30. Pure Functions
 
 দুটো শর্ত:
 1. **একই input → সবসময় একই output**
@@ -903,7 +951,7 @@ const push = (arr, x) => { arr.push(x); return arr; };  // input mutate
 
 ---
 
-## 31. Event Delegation
+## 🔴 31. Event Delegation
 
 ### 🧠 উপমা
 ১০০ জন কর্মচারীর জন্য আলাদা ১০০টা রিসেপশনিস্ট না রেখে **গেটে একজন** রাখা, সে-ই দেখে কে ঢুকলো।
@@ -936,7 +984,16 @@ document.querySelector('ul').addEventListener('click', (e) => {
 
 ---
 
-## 32. `type` vs `interface`
+# 📦 PART 6: TypeScript Types
+
+> প্রশ্ন 32–38 | ⏱️ আনুমানিক সময়: ~২৫ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 32, 33, 36
+> 🟡 **Good (মূল ধারণা):** 34, 35, 37, 38
+
+---
+
+## 🔴 32. `type` vs `interface`
 
 ```ts
 interface User { name: string; age: number; }
@@ -963,7 +1020,7 @@ type Point = [number, number]; // tuple
 
 ---
 
-## 33. Union vs Intersection
+## 🔴 33. Union vs Intersection
 
 ```ts
 // Union: এটা অথবা ওটা
@@ -985,7 +1042,7 @@ Union এ শুধু **দুটোর common member** সরাসরি ব�
 
 ---
 
-## 34. Type Inference
+## 🟡 34. Type Inference
 
 TS নিজেই মান দেখে type বুঝে নেয়, সবসময় লিখতে হয় না।
 
@@ -999,7 +1056,7 @@ function add(a: number, b: number) { return a + b; }  // return: number (inferre
 
 ---
 
-## 35. Optional Chaining (`?.`) ও Nullish Coalescing (`??`)
+## 🟡 35. Optional Chaining (`?.`) ও Nullish Coalescing (`??`)
 
 ```ts
 const city = user?.address?.city;        // user বা address null/undefined হলে error না, undefined
@@ -1020,7 +1077,7 @@ const port = config.port ?? 3000;        // শুধু null/undefined হল�
 
 ---
 
-## 36. `any` vs `unknown` vs `never`
+## 🔴 36. `any` vs `unknown` vs `never`
 
 | | মানে | নিরাপদ? |
 |---|---|---|
@@ -1042,7 +1099,7 @@ function fail(msg: string): never { throw new Error(msg); }   // কখনো re
 
 ---
 
-## 37. Structural Typing
+## 🟡 37. Structural Typing
 
 TS **নাম** দেখে না, **shape (গঠন)** দেখে। যার গঠন মিলে যায় সে compatible।
 
@@ -1061,7 +1118,7 @@ const r: Point = { x: 1, y: 2, z: 3 };  // ❌ excess property error
 
 ---
 
-## 38. `readonly`
+## 🟡 38. `readonly`
 
 ```ts
 interface Config { readonly apiUrl: string }
@@ -1078,7 +1135,17 @@ type R = Readonly<{ a: number }>;
 
 ---
 
-## 39. Generics ও Constraints
+# 📦 PART 7: TypeScript Generics ও Advanced Types
+
+> প্রশ্ন 39–44 | ⏱️ আনুমানিক সময়: ~৩০ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 39, 41, 44
+> 🟡 **Good (মূল ধারণা):** 40, 42
+> ⚪ **সময় থাকলে:** 43
+
+---
+
+## 🔴 39. Generics ও Constraints
 
 ### 🧠 উপমা
 Generic হলো **টাইপের জন্য function parameter**। ফাঁকা বাক্স যার ভেতরে কী যাবে পরে ঠিক হবে।
@@ -1111,7 +1178,7 @@ getProp({ name: 'A' }, 'x');              // ❌ 'x' key নেই
 
 ---
 
-## 40. `void` vs `never`
+## 🟡 40. `void` vs `never`
 
 ```ts
 function log(): void { console.log('hi'); }     // return করে, কিন্তু কোনো দরকারি মান না
@@ -1123,7 +1190,7 @@ function loop(): never { while (true) {} }
 
 ---
 
-## 41. Utility Types
+## 🔴 41. Utility Types
 
 ```ts
 interface User { id: number; name: string; email: string; age: number }
@@ -1153,7 +1220,7 @@ const roles: Record<'admin' | 'user', string[]> = { admin: ['all'], user: ['read
 
 ---
 
-## 42. `keyof` ও `typeof` একসাথে
+## 🟡 42. `keyof` ও `typeof` একসাথে
 
 ```ts
 const config = { host: 'localhost', port: 3000 };
@@ -1174,7 +1241,7 @@ type Role = typeof ROLES[keyof typeof ROLES];   // 'ADMIN' | 'USER'
 
 ---
 
-## 43. Conditional Types (সংক্ষেপে)
+## ⚪ 43. Conditional Types (সংক্ষেপে)
 
 ```ts
 type IsString<T> = T extends string ? true : false;
@@ -1188,7 +1255,7 @@ type E = ElementType<number[]>;                        // number
 
 ---
 
-## 44. Discriminated Union
+## 🔴 44. Discriminated Union
 
 ### 📖 ব্যাখ্যা
 Union এর প্রতিটা variant এ একটা **সাধারণ literal field** (tag) থাকে, যা দেখে TS বুঝে নেয় কোনটা।
@@ -1216,7 +1283,16 @@ function handle(r: Result) {
 
 ---
 
-## 45. API Response Safely Type করা
+# 📦 PART 8: TypeScript Real-world
+
+> প্রশ্ন 45–48 | ⏱️ আনুমানিক সময়: ~২৫ মিনিট
+>
+> 🔴 **Must (গভীরে পড়ো):** 45, 47
+> 🟡 **Good (মূল ধারণা):** 46, 48
+
+---
+
+## 🔴 45. API Response Safely Type করা
 
 **সমস্যা:** `const data = (await res.json()) as User` শুধু TS কে চুপ করায়। Backend ভুল ডেটা পাঠালে **runtime এ crash**, TS কিছু ধরবে না। Types runtime এ থাকে না!
 
@@ -1252,7 +1328,7 @@ function isUser(x: unknown): x is User {
 
 ---
 
-## 46. TypeScript কীভাবে Runtime Error কমায়
+## 🟡 46. TypeScript কীভাবে Runtime Error কমায়
 
 - **null/undefined** ভুল ধরে (`strictNullChecks`): `Cannot read properties of undefined` এর অনেকটাই আগেই ধরা পড়ে
 - ভুল type এ function call, ভুল property নাম (typo) ধরে
@@ -1266,7 +1342,7 @@ function isUser(x: unknown): x is User {
 
 ---
 
-## 47. TS → JS Compile ও Runtime এ Types
+## 🔴 47. TS → JS Compile ও Runtime এ Types
 
 ### কীভাবে compile হয়
 ```
@@ -1294,7 +1370,7 @@ function hi(u) { return u.name; }   // interface, type annotation সব গা�
 
 ---
 
-## 48. TypeScript এর Trade-offs
+## 🟡 48. TypeScript এর Trade-offs
 
 | সুবিধা | অসুবিধা |
 |---|---|
